@@ -1,0 +1,3 @@
+insert into `redpacket_record_test` (`id`, `tvid`, `redpacked_id`, `type`, `c_time`) values('1','100000001','1','1','2018-07-08 10:52:20');
+insert into `redpacket_record_test` (`id`, `tvid`, `redpacked_id`, `type`, `c_time`) values('2','100000002','2','1','2018-07-08 10:52:31');
+insert into `redpacket_record_test` (`id`, `tvid`, `redpacked_id`, `type`, `c_time`) values('3','100000003','3','1','2018-07-08 10:52:41');

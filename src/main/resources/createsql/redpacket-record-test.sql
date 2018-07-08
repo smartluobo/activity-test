@@ -1,0 +1,8 @@
+  CREATE TABLE redpacket_record_test (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tvid` varchar(64) DEFAULT NULL,
+  `redpacked_id` int(11) DEFAULT NULL,
+  `type` varchar(2) DEFAULT NULL,
+    `c_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8

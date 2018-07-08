@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.redpacket.activity.mapper.RedpacketPoolMapper">
+
+    <select id="getRedpacketPoolById" parameterType="int" resultType="com.redpacket.activity.bean.RedpacketPool">
+      SELECT * FROM redpacket_pool_test WHERE id = #{id}
+    </select>
+
+    <insert id="insertRedpacketPool" parameterType="com.redpacket.activity.bean.RedpacketPool" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO redpacket_pool_test (status, amount, round_id, c_time)
+                VALUES (#{status},#{amount},#{roundId},#{cTime})
+    </insert>
+
+</mapper>
