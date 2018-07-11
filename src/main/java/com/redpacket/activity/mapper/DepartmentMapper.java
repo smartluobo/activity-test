@@ -12,10 +12,10 @@ public interface DepartmentMapper {
     Department getDepartmentById(Integer id);
 
     @Delete("delete from department where id = #{id}")
-    int deleteRedpacketRecordById(Integer id);
+    int deleteDepartmentById(Integer id);
 
     @Update("update department set departmentName = #{departmentName} where id = #{id}")
-    int updateRedpacketRecordById(Department department);
+    int updateDepartmentById(Department department);
 
     @Options(useGeneratedKeys = true)
     @Insert("insert into department (departmentName) values (#{departmentName}) ")

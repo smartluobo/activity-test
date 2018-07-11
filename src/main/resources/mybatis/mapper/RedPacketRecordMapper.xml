@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.redpacket.activity.mapper.RedPacketRecordMapper">
+    <insert id="insertRedPacketRecord" parameterType="com.redpacket.activity.bean.RedpacketRecord">
+        {call Grap_Redpacket(
+        #{tvid,mode=IN},
+        #{type,mode=IN},
+        #{roundId,mode=IN},
+        #{poolId,mode=IN},
+        #{rValue,mode=IN},
+        #{ip,mode=IN},
+        #{cTime,mode=IN})
+        }
+    </insert>
+</mapper>

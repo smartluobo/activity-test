@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.redpacket.activity.mapper.CouponRecordMapper">
+    <insert id="insertCouponRecord" parameterType="com.redpacket.activity.bean.CouponRecord">
+        INSERT INTO coupon_record (round_id, tvid, pool_id, code, discount_amount, c_time)
+        VALUES (#{roundId},#{tvid},#{poolId},#{code},#{discountAmount},#{cTime})
+    </insert>
+</mapper>

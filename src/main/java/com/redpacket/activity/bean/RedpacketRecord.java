@@ -4,17 +4,52 @@ import java.util.Date;
 
 public class RedpacketRecord {
 
-    private Integer id;
+    /**
+     * 物理主键
+     */
+    private int id;
+    /**
+     * 用户唯一标识
+     */
     private String tvid;
-    private Integer redpacketId;
-    private Integer type;
+    /**
+     * 记录类型1普通2升级3奖金池
+     */
+    private String type;
+    /**
+     * 场次id
+     */
+    private int roundId;
+    /**
+     * 红包id
+     */
+    private int poolId;
+    /**
+     * 红包金额 单位为分
+     */
+    private int rValue;
+    /**
+     * ip地址
+     */
+    private String ip;
+    /**
+     * 城市
+     */
+    private String city;
+    /**
+     * 省份
+     */
+    private String province;
+    /**
+     * 创建时间
+     */
     private Date cTime;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -26,20 +61,60 @@ public class RedpacketRecord {
         this.tvid = tvid;
     }
 
-    public Integer getRedpacketId() {
-        return redpacketId;
-    }
-
-    public void setRedpacketId(Integer redpacketId) {
-        this.redpacketId = redpacketId;
-    }
-
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(String type) {
         this.type = type;
+    }
+
+    public int getRoundId() {
+        return roundId;
+    }
+
+    public void setRoundId(int roundId) {
+        this.roundId = roundId;
+    }
+
+    public int getPoolId() {
+        return poolId;
+    }
+
+    public void setPoolId(int poolId) {
+        this.poolId = poolId;
+    }
+
+    public int getrValue() {
+        return rValue;
+    }
+
+    public void setrValue(int rValue) {
+        this.rValue = rValue;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public Date getcTime() {
@@ -55,8 +130,13 @@ public class RedpacketRecord {
         return "RedpacketRecord{" +
                 "id=" + id +
                 ", tvid='" + tvid + '\'' +
-                ", redpacketId=" + redpacketId +
-                ", type=" + type +
+                ", type='" + type + '\'' +
+                ", roundId=" + roundId +
+                ", poolId=" + poolId +
+                ", rValue=" + rValue +
+                ", ip='" + ip + '\'' +
+                ", city='" + city + '\'' +
+                ", province='" + province + '\'' +
                 ", cTime=" + cTime +
                 '}';
     }

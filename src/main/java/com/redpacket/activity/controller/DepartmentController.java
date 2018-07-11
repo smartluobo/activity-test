@@ -30,13 +30,13 @@ public class DepartmentController {
 
     @GetMapping("/del/{id}")
     public int deleteRedpacketRecordById(@PathVariable("id") Integer id){
-        int count = departmentMapper.deleteRedpacketRecordById(id);
+        int count = departmentMapper.deleteDepartmentById(id);
         return count;
     }
 
     @GetMapping("/update")
     public int updateRedpacketRecordById(Department department){
-        int count = departmentMapper.updateRedpacketRecordById(department);
+        int count = departmentMapper.updateDepartmentById(department);
         return count;
     }
 }
