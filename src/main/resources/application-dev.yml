@@ -30,9 +30,11 @@ spring:
       max-idle: 100
       min-idle: 20
     timeout: 60000
-    sentinel:
-      master: mymaster
-      nodes: 10.120.199.238:26479,10.120.199.238:26480
+    host: 127.0.0.1
+    port: 6379
+#    sentinel:
+#      master: mymaster
+#      nodes: 10.120.199.238:26479,10.120.199.238:26480
   rabbitmq:
     addresses: 10.120.151.135:5682,10.120.151.230:5682
     username: mytest

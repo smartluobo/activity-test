@@ -51,20 +51,20 @@ public class GrabService {
         String packetRatio = "0.8";
         long currentTimeMillis = System.currentTimeMillis();
         String result = grabRedpacket(tvid,roundId,currDate,yesterDayDate,beforeDate,currentTimeMillis,packetRatio);
-        LOGGER.info("current tvid : {} roundId : {} execute lua script return result :{}",tvid,roundId,result);
-        if (result != null && result.split(RedPacketConstant.SEPARATOR).length == 2){
-            String[] split = result.split(RedPacketConstant.SEPARATOR);
-            if (RedPacketConstant.SACK_MARK.equals(split[0])){
-                result = grabCoupon(tvid, roundId, currDate, roundId, currentTimeMillis);
-                LOGGER.info("redpacket grab sack execute coupon lua script return result : {} ",result);
-                if (RedPacketConstant.SACK_MARK.equals(result)){//用户未抢到优惠券或当日已抢过优惠券
-                   return;
-                }
-                parseCouponRecord(result,tvid,couponPool);
-            }
-        }
-        String ip = "192.168.1.100";
-       parseRedPacketRecord(result, tvid,ip);
+//        LOGGER.info("current tvid : {} roundId : {} execute lua script return result :{}",tvid,roundId,result);
+//        if (result != null && result.split(RedPacketConstant.SEPARATOR).length == 2){
+//            String[] split = result.split(RedPacketConstant.SEPARATOR);
+//            if (RedPacketConstant.SACK_MARK.equals(split[0])){
+//                result = grabCoupon(tvid, roundId, currDate, roundId, currentTimeMillis);
+//                LOGGER.info("redpacket grab sack execute coupon lua script return result : {} ",result);
+//                if (RedPacketConstant.SACK_MARK.equals(result)){//用户未抢到优惠券或当日已抢过优惠券
+//                   return;
+//                }
+//                parseCouponRecord(result,tvid,couponPool);
+//            }
+//        }
+//        String ip = "192.168.1.100";
+//       parseRedPacketRecord(result, tvid,ip);
     }
 
     private void parseCouponRecord(String result, String tvid, CouponPool couponPool) {
@@ -136,10 +136,10 @@ public class GrabService {
             if (StringUtils.isNotBlank(upgradeAmount)) {//表示为升级红包
                 redPacketRecord.setType(RedPacketConstant.REDPACKET_TYPE_UPGRADE);
                 redPacketRecord.setrValue(Integer.valueOf(upgradeAmount));
-                redpacketRecordSender.sendMsg(Constant.TEST_REDPACKET_QUEUE_KEY, redPacketRecord);//发送异步消息
+                //redpacketRecordSender.sendMsg(Constant.TEST_REDPACKET_QUEUE_KEY, redPacketRecord);//发送异步消息
                 return;
             } else {
-                redpacketRecordSender.sendMsg(Constant.TEST_REDPACKET_QUEUE_KEY, redPacketRecord);//发送异步消息
+                //redpacketRecordSender.sendMsg(Constant.TEST_REDPACKET_QUEUE_KEY, redPacketRecord);//发送异步消息
             }
         }
     }

@@ -75,11 +75,11 @@
 
     <logger name="org.spring" additivity="false" level="info">
         <appender-ref ref="FILE"/>
-        <!--<appender-ref ref="STDOUT"/>-->
+        <appender-ref ref="STDOUT"/>
     </logger>
 
     <logger name="org.springframework" additivity="false" level="info">
-        <!--<appender-ref ref="STDOUT"/>-->
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </logger>
 

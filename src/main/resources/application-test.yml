@@ -5,7 +5,7 @@ spring:
     username: ff728_user
     password: FF728hb#180629
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://10.88.1.86:3306/ff728?characterEncoding=utf-8
+    url: jdbc:mysql://10.88.88.12:3306/ff728?characterEncoding=utf-8
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -30,14 +30,18 @@ spring:
       max-idle: 100
       min-idle: 20
     timeout: 60000
-    sentinel:
-      master: mymaster
-      nodes: 10.88.2.76:26379,10.88.1.89:26379
+    host: 10.88.88.13
+    port: 6379
+#    sentinel:
+#      master: mymaster
+#      nodes: 10.88.2.76:26379,10.88.1.89:26379
   rabbitmq:
-    addresses: 10.88.1.87:5672,10.88.2.74:5672
+#    addresses: 10.88.1.87:5672,10.88.2.74:5672
     username: ff728pro
     password: ff728pro
     virtual-host: 728_activity_redpacket_vhost
+    host: 10.88.88.13
+    port: 5672
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
@@ -46,16 +50,16 @@ mybatis:
 #      - classpath:initdatasql/*.sql
 my:
   threadPool:
-    corePoolSize: 200
-    maximumPoolSize: 500
+    corePoolSize: 500
+    maximumPoolSize: 1000
     keepAliveTime: 60000
-    queueLength: 1000
+    queueLength: 10000
     receiveCorePoolSize: 50
     receiveMaximumPoolSize: 100
     receiveKeepAliveTime: 60000
     receiveQueueLength: 1000
-    sendCorePoolSize: 50
-    sendMaximumPoolSize: 100
+    sendCorePoolSize: 200
+    sendMaximumPoolSize: 200
     sendKeepAliveTime: 60000
     sendQueueLength: 1000
 server:

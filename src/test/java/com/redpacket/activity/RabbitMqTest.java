@@ -3,6 +3,7 @@ package com.redpacket.activity;
 import com.redpacket.activity.bean.CouponRecord;
 import com.redpacket.activity.bean.RedpacketRecord;
 import com.redpacket.activity.constan.Constant;
+import com.redpacket.activity.handler.sender.RedpacketRecordSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,17 +24,23 @@ public class RabbitMqTest {
     @Resource
     private RabbitTemplate rabbitTemplate;
 
+    @Resource
+    private RedpacketRecordSender redpacketRecordSender;
+
     @Test
     public void testRedPacketMqSend(){
-        RedpacketRecord redpacketRecord = new RedpacketRecord();
-        redpacketRecord.setIp("192.168.1.100");
-        redpacketRecord.setPoolId(655351);
-        redpacketRecord.setRoundId(22);
-        redpacketRecord.setrValue(128);
-        redpacketRecord.setTvid("101010101-db8f400ff5b452f6");
-        redpacketRecord.setType("1");
-        redpacketRecord.setcTime(new Date());
-        rabbitTemplate.convertAndSend(Constant.TEST_REDPACKET_QUEUE_KEY,redpacketRecord);
+        for (int i = 0; i < 10; i++) {
+            RedpacketRecord redpacketRecord = new RedpacketRecord();
+            redpacketRecord.setIp("192.168.1.100");
+            redpacketRecord.setPoolId(655351);
+            redpacketRecord.setRoundId(22);
+            redpacketRecord.setrValue(128);
+            redpacketRecord.setTvid("101010101-db8f400ff5b452f6");
+            redpacketRecord.setType("1");
+            redpacketRecord.setcTime(new Date());
+            redpacketRecordSender.sendMsg(Constant.TEST_REDPACKET_QUEUE_KEY,redpacketRecord);
+        }
+
     }
 
     public void testCouponMqSend(){

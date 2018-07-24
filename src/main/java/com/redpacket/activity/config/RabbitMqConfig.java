@@ -1,10 +1,7 @@
 package com.redpacket.activity.config;
 
 import com.redpacket.activity.constan.Constant;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.JsonMessageConverter;
@@ -54,10 +51,23 @@ public class RabbitMqConfig {
     }
 
     @Bean
+    public MessageProperties messageProperties(){
+        MessageProperties messageProperties = new MessageProperties();
+        messageProperties.setDeliveryMode(MessageDeliveryMode.NON_PERSISTENT);
+        return messageProperties;
+    }
+
+    @Bean
+    public DefineMessageConverter defineMessageConverter(){
+        DefineMessageConverter defineMessageConverter = new DefineMessageConverter(messageProperties());
+        return defineMessageConverter;
+    }
+
+    @Bean
     public RabbitTemplate rabbitTemplate(){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(cachingConnectionFactory);
-       rabbitTemplate.setMessageConverter(jsonMessageConverter());
-       rabbitTemplate.setExchange(Constant.EXCHANGE_NAME);
+        rabbitTemplate.setMessageConverter(defineMessageConverter());
+        rabbitTemplate.setExchange(Constant.EXCHANGE_NAME);
         return rabbitTemplate;
     }
 }

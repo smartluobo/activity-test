@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 
 @RestController
@@ -30,9 +30,6 @@ public class TestController {
     @Resource(name="executorService")
     private ExecutorService executorService;
 
-    @Resource(name="receiveExecutorService")
-    private ExecutorService receiveExecutorService;
-
     @Resource(name = "sendExecutorService")
     private ExecutorService sendExecutorService;
 
@@ -41,6 +38,10 @@ public class TestController {
 
     @Resource
     private GrabService grabService;
+
+    public static List<RedpacketRecord> redpacketRecords =new ArrayList<>(300000);
+
+    public static final String tvid = "100000000-5ba4959e5583fc32";
 
 
     //用户保存到redis
@@ -130,6 +131,22 @@ public class TestController {
         }
         long endTime = System.currentTimeMillis();
         return count+"message concurrent send mq complete cost Time :  "+(endTime-startTime)/1000 +"s";
+    }
+
+    @GetMapping("/testMemory/{count}")
+    public String testMemory(@PathVariable("count") Integer count){
+        for (int i = 0; i < count; i++) {
+            RedpacketRecord redpacketRecord = new RedpacketRecord();
+            redpacketRecord.setTvid(tvid);
+            redpacketRecord.setIp("192.168.1.100");
+            redpacketRecord.setRoundId(22);
+            redpacketRecord.setPoolId(22);
+            redpacketRecord.setType("1");
+            redpacketRecord.setrValue(198);
+            redpacketRecord.setcTime(new Date());
+            redpacketRecords.add(redpacketRecord);
+        }
+        return "yes";
     }
 
 }

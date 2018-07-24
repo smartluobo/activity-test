@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.concurrent.ExecutorService;
 
 @Component
 public class RedpacketRecordReceiveListener {
@@ -21,14 +22,44 @@ public class RedpacketRecordReceiveListener {
     private RedPacketRecordMapper redPacketRecordMapper;
 
     //@RabbitListener(queues = Constant.TEST_REDPACKET_QUEUE_NAME)
-    public void redpacketRecordReceive(RedpacketRecord redpacketRecord, Channel channel) {
+    public void redpacketRecordReceive(RedpacketRecord redpacketRecord) {
         try {
-            LOGGER.info("*************************TestRedPacketMqListener: ********************，消息内容： {} ",redpacketRecord.toString());
+            LOGGER.info("*************************TestRedPacketMqListener: ********************，content： {} ",redpacketRecord.toString());
             redPacketRecordMapper.insertRedPacketRecord(redpacketRecord);
-           // channel.basicAck();
         }catch (Exception e){
-            //channel.basicNack();
             LOGGER.info("*************************TestRedPacketMqListener: ***************** happen exception: ",e);
         }
     }
+
+//    @RabbitListener(queues = Constant.TEST_REDPACKET_QUEUE_NAME)
+//    public void redpacketRecordReceive1(RedpacketRecord redpacketRecord, Channel channel) {
+//        try {
+//            LOGGER.info("*************************TestRedPacketMqListener: ********************，content： {} ",redpacketRecord.toString());
+//            redPacketRecordMapper.insertRedPacketRecord(redpacketRecord);
+//        }catch (Exception e){
+//            LOGGER.info("*************************TestRedPacketMqListener: ***************** happen exception: ",e);
+//        }
+//    }
+//
+//    @RabbitListener(queues = Constant.TEST_REDPACKET_QUEUE_NAME)
+//    public void redpacketRecordReceive2(RedpacketRecord redpacketRecord, Channel channel) {
+//        try {
+//            LOGGER.info("*************************TestRedPacketMqListener: ********************，content： {} ",redpacketRecord.toString());
+//            redPacketRecordMapper.insertRedPacketRecord(redpacketRecord);
+//        }catch (Exception e){
+//            LOGGER.info("*************************TestRedPacketMqListener: ***************** happen exception: ",e);
+//        }
+//    }
+//
+//    @RabbitListener(queues = Constant.TEST_REDPACKET_QUEUE_NAME)
+//    public void redpacketRecordReceive3(RedpacketRecord redpacketRecord, Channel channel) {
+//        try {
+//            LOGGER.info("*************************TestRedPacketMqListener: ********************，content： {} ",redpacketRecord.toString());
+//            redPacketRecordMapper.insertRedPacketRecord(redpacketRecord);
+//        }catch (Exception e){
+//            LOGGER.info("*************************TestRedPacketMqListener: ***************** happen exception: ",e);
+//        }
+//    }
+
+
 }
