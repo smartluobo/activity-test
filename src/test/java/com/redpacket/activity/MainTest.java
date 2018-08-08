@@ -20,6 +20,5 @@ public class MainTest {
         testData.setMsg("hello world");
         System.out.println(testBean);
         LOGGER.error("hahha:{}",testBean);
-        Collections.sort();
     }
 }

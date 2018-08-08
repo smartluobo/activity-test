@@ -30,8 +30,8 @@ spring:
       max-idle: 100
       min-idle: 20
     timeout: 60000
-    host: 127.0.0.1
-    port: 6379
+    host: 10.120.199.238
+    port: 6481
 #    sentinel:
 #      master: mymaster
 #      nodes: 10.120.199.238:26479,10.120.199.238:26480
